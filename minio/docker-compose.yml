@@ -7,8 +7,8 @@ services:
     image: minio/minio:latest
     command: server --address 0.0.0.0:9000 --console-address ":9001" /data/
     ports:
-      - "8080:9000"
-      - "8081:9001"
+      - "9000:9000"
+      - "9001:9001"
 
     hostname: minio
 
