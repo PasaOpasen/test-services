@@ -2,18 +2,46 @@
 
 version: "3.9"
 
+# services:
+#   keycloak:
+    
+#     image: jboss/keycloak:3.4.3.Final
+
+#     environment:
+#       - KEYCLOAK_USER=admin
+#       - KEYCLOAK_PASSWORD=admin
+
+#     ports:
+#       - 8080:8080
+
 services:
   keycloak:
-    
     image: jboss/keycloak:3.4.3.Final
-
     environment:
       - KEYCLOAK_USER=admin
       - KEYCLOAK_PASSWORD=admin
-
+      - PROXY_ADDRESS_FORWARDING=true
+      - DB_VENDOR=mysql
+      - DB_ADDR=db
+      - DB_PORT=3306
+      - DB_DATABASE=keycloak
+      - DB_USER=keycloak
+      - DB_PASSWORD=example
     ports:
       - 8080:8080
-
+      - 8081:8443
+      - 8082:9990
+  db:
+    image: mysql:5
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: keycloak
+      MYSQL_USER: keycloak
+      MYSQL_PASSWORD: example
+    volumes:
+      - ./data:/var/lib/mysql
+    ports:
+      - "5100:3306"
 
 
 
