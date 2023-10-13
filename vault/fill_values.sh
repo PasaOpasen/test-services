@@ -9,3 +9,8 @@ vault kv put secret/rpa USER=user PASSWORD=passwd
 vault kv put secret/docutable DOCA.SOMETHING=SOMETHING
 
 
+vault auth enable userpass
+vault write auth/userpass/users/myusername password=mypassword policies=vault-quickstart-policy
+
+#hvac_client = hvac.Client(url="http://localhost:8200")
+#hvac_client.auth_userpass(username="myusername", password="mypassword")
