@@ -16,7 +16,7 @@ services:
       - 8100:8200
 
     volumes:
-      - ./fill_values.sh:/fill_values.sh
+      - ./post_init:/post_init
 
     # command: |
     #   vault server -dev

@@ -1,7 +1,7 @@
 
 up:
 	docker compose up -d 
-	docker exec vault-test sh /fill_values.sh
+	sleep 0.4; docker exec vault-test sh /post_init/fill_values.sh
 
 down:
 	docker compose down
