@@ -12,7 +12,7 @@ services:
       - VAULT_DEV_LISTEN_ADDRESS=0.0.0.0:8200
 
     ports:
-      - 8200:8200
+      - 8100:8200
 
     volumes:
       - ./fill_values.sh:/fill_values.sh
