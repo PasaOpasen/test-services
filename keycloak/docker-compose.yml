@@ -33,6 +33,7 @@ services:
       - 8082:9990
   db:
     image: mysql:5
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: example
       MYSQL_DATABASE: keycloak
