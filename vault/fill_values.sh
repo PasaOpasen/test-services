@@ -1,6 +1,6 @@
 
-# export VAULT_ADDR='http://0.0.0.0:8200'
-export VAULT_ADDR='http://vault.db:8200'
+export VAULT_ADDR='http://0.0.0.0:8200'
+# export VAULT_ADDR='http://vault.db:8200'
 
 vault login root
 

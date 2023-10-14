@@ -4,6 +4,7 @@ version: "3.9"
 
 services:
   vault:
+    container_name: vault-test
     
     image: hashicorp/vault
 
