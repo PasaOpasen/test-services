@@ -17,6 +17,7 @@ services:
 
     volumes:
       - ./post_init:/post_init
+      - ./output:/out
 
     # command: |
     #   vault server -dev
