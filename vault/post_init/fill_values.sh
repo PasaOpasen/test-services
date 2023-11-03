@@ -30,7 +30,7 @@ vault write auth/approle/role/custom-role \
     token_num_uses=0 \
     token_ttl=0m \
     token_max_ttl=0m \
-    secret_id_num_uses=40 \
+    secret_id_num_uses=0 \
     policies="admin"
 
 
