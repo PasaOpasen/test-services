@@ -47,6 +47,16 @@ path "secret/*"
   capabilities = ["create", "read", "update", "delete", "list", "sudo"]
 }
 
+path "custom/path/*"
+{
+  capabilities = ["create", "read", "update", "delete", "list", "sudo"]
+}
+
+path "other/*"
+{
+  capabilities = ["create", "read", "update", "delete", "list", "sudo"]
+}
+
 # Manage secrets engines
 path "sys/mounts/*"
 {
