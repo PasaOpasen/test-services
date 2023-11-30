@@ -12,17 +12,33 @@ vault policy write admin /post_init/admin-policy.hcl
 vault secrets enable -path=custom/path kv
 vault secrets enable -path=other kv
 
+#################
+#
+# FILL VALUES
+#
+#################
+
 vault kv put secret/pyrus PYRUS.creds.login=plogin PYRUS.creds.security_key=skey
 vault kv put secret/rpa USER=user PASSWORD=passwd
 vault kv put secret/docutable DOCA.SOMETHING=SOMETHING
 
+vault kv put secret/web OIDC_RP_CLIENT_ID=test-client
+vault kv put secret/web OIDC_RP_CLIENT_SECRET='0511b907-5ac2-4b6d-a1f5-8fb2c0ebd3ed'
 vault kv put secret/web OIDC_RP_SIGN_ALGO=RS256
+
 vault kv put secret/hl HOTFOLDER.inpath=docs-map.yaml
+
 vault kv put secret/pyin DOCTYPE_OVERRIDES.bankruptcy.DREAMDOCS.INFO.DOCSET=bankrotstvo-zaiavlenie-test
+
 
 vault kv put custom/path/some/key K=V KK=VV
 vault kv put other/some/key K=V KK=VV
 vault kv put other/newkey K=V KK=VV
+
+
+#
+# auth methods
+#
 
 vault auth enable userpass
 vault write auth/userpass/users/myusername password=mypassword policies=admin
