@@ -40,9 +40,11 @@ vault write auth/approle/role/custom-role \
     policies="admin"
 
 
-vault read auth/approle/role/custom-role/role-id
+vault read auth/approle/role/custom-role/role-id | tee /dev/fd/2 | grep role_id | awk '{print $2}' > /out/role-id.txt
 
-vault write -f auth/approle/role/custom-role/secret-id
+vault write -f auth/approle/role/custom-role/secret-id \
+    | tee /dev/fd/2 | grep -E 'secret_id\s' \
+    | awk '{print $2}' > /out/secret-id.txt
 
 # vault write auth/approle/login \
 #     role_id=18035f28-e0a1-d811-d439-6df236f5dfd9 \
