@@ -22,9 +22,9 @@ vault kv put secret/pyrus PYRUS.creds.login=plogin PYRUS.creds.security_key=skey
 vault kv put secret/rpa USER=user PASSWORD=passwd
 vault kv put secret/docutable DOCA.SOMETHING=SOMETHING
 
-vault kv put secret/web OIDC_RP_CLIENT_ID=test-client
-vault kv put secret/web OIDC_RP_CLIENT_SECRET='0511b907-5ac2-4b6d-a1f5-8fb2c0ebd3ed'
-vault kv put secret/web OIDC_RP_SIGN_ALGO=RS256
+vault kv put secret/web OIDC_RP_CLIENT_ID=test-client \
+    OIDC_RP_CLIENT_SECRET='42e64ddf-c67a-4df6-8bd2-c11aa48b0cc6' \
+    OIDC_RP_SIGN_ALGO=RS256
 
 vault kv put secret/hl HOTFOLDER.inpath=docs-map.yaml
 
