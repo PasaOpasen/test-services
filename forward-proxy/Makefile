@@ -8,3 +8,6 @@ down:
 check:
 	curl --proxy http://localhost:8050 https://www.baidu.com --include --verbose
 
+restart: down up 
+	sleep 1
+	make check
