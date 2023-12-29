@@ -43,6 +43,10 @@ services:
       - ./data:/var/lib/mysql
     ports:
       - "5100:3306"
+    ulimits:
+      nofile:
+        soft: "262144"
+        hard: "262144"
 
 
 

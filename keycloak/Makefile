@@ -4,3 +4,5 @@ up:
 
 down:
 	docker compose down
+
+restart: down up
