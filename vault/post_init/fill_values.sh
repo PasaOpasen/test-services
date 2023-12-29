@@ -23,7 +23,7 @@ vault kv put secret/rpa USER=user PASSWORD=passwd
 vault kv put secret/docutable DOCA.SOMETHING=SOMETHING
 
 vault kv put secret/web OIDC_RP_CLIENT_ID=test-client \
-    OIDC_RP_CLIENT_SECRET='42e64ddf-c67a-4df6-8bd2-c11aa48b0cc6' \
+    OIDC_RP_CLIENT_SECRET='81803023-e9cd-4596-8737-a9a69e041096' \
     OIDC_RP_SIGN_ALGO=RS256
 
 vault kv put secret/hl HOTFOLDER.inpath=docs-map.yaml
