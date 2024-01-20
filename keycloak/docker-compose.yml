@@ -15,6 +15,24 @@ version: "3.9"
 #       - 8080:8080
 
 services:
+
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWD}
+    volumes:
+      - ./data:/var/lib/mysql
+    ports:
+      - "5100:3306"
+    ulimits:
+      nofile:
+        soft: "262144"
+        hard: "262144"
+
   keycloak:
     image: jboss/keycloak:3.4.3.Final
     environment:
@@ -24,29 +42,18 @@ services:
       - DB_VENDOR=mysql
       - DB_ADDR=db
       - DB_PORT=3306
-      - DB_DATABASE=keycloak
-      - DB_USER=keycloak
-      - DB_PASSWORD=example
+
+      - DB_DATABASE=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWD}
     ports:
       - 8080:8080
       - 8081:8443
       - 8082:9990
-  db:
-    image: mysql:5
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: example
-      MYSQL_DATABASE: keycloak
-      MYSQL_USER: keycloak
-      MYSQL_PASSWORD: example
-    volumes:
-      - ./data:/var/lib/mysql
-    ports:
-      - "5100:3306"
-    ulimits:
-      nofile:
-        soft: "262144"
-        hard: "262144"
+      
+    depends_on:
+      - db
+
 
 
 

@@ -1,5 +1,6 @@
 
 up:
+	mkdir -p data
 	docker compose up -d 
 
 down:
