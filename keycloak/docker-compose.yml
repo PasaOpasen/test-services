@@ -50,6 +50,14 @@ services:
       - 8080:8080
       - 8081:8443
       - 8082:9990
+    
+    # entrypoint: ''
+    # command: 
+    #   - sh
+    #   - -c 
+    #   - |
+    #     sleep 10
+    #     /opt/jboss/docker-entrypoint.sh -b 0.0.0.0
       
     depends_on:
       - db
