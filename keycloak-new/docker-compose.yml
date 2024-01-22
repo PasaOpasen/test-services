@@ -1,0 +1,35 @@
+
+version: '3.9'
+services:
+
+  postgresql:
+    image: docker.io/bitnami/postgresql:latest
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - POSTGRESQL_USERNAME=bn_keycloak
+      - POSTGRESQL_DATABASE=bitnami_keycloak
+    volumes:
+      - './data:/bitnami/postgresql'
+
+  keycloak:
+    image: docker.io/bitnami/keycloak:latest
+    ports:
+      - 8083:8080
+      - 8084:8443
+      - 8085:9990
+    environment:
+      - KEYCLOAK_CREATE_ADMIN_USER=true
+      - KEYCLOAK_ADMIN=admin 
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+      - KEYCLOAK_ENABLE_HTTPS=true 
+      - KEYCLOAK_HTTPS_USE_PEM=true
+      - KEYCLOAK_HTTPS_CERTIFICATE_FILE=/opt/bitnami/keycloak/certs/tls.crt
+      - KEYCLOAK_HTTPS_CERTIFICATE_KEY_FILE=/opt/bitnami/keycloak/certs/tls.key
+    
+    volumes:
+      - ./cert:/opt/bitnami/keycloak/certs
+    
+    depends_on:
+      - postgresql
+
+
