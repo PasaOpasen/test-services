@@ -23,7 +23,7 @@ vault kv put secret/rpa USER=user PASSWORD=passwd
 vault kv put secret/docutable DOCA.SOMETHING=SOMETHING
 
 vault kv put secret/web OIDC_RP_CLIENT_ID=test-client \
-    OIDC_RP_CLIENT_SECRET='84cc1184-1a79-48ac-96ff-ae34f9e4cf1d' \
+    OIDC_RP_CLIENT_SECRET='AteFCNHKpYbyI3eutCSwE6br3VFAxtO8' \
     OIDC_RP_SIGN_ALGO=RS256
 
 vault kv put secret/hl HOTFOLDER.inpath=docs-map.yaml
@@ -56,11 +56,13 @@ vault write auth/approle/role/custom-role \
     policies="admin"
 
 
-vault read auth/approle/role/custom-role/role-id | tee /dev/fd/2 | grep role_id | awk '{print $2}' > /out/role-id.txt
+vault read auth/approle/role/custom-role/role-id \
+    | tee /dev/fd/2 | grep role_id \
+    | awk '{print $2}' | tr -d '\n' > /out/role-id.txt
 
 vault write -f auth/approle/role/custom-role/secret-id \
     | tee /dev/fd/2 | grep -E 'secret_id\s' \
-    | awk '{print $2}' > /out/secret-id.txt
+    | awk '{print $2}' | tr -d '\n' > /out/secret-id.txt
 
 # vault write auth/approle/login \
 #     role_id=18035f28-e0a1-d811-d439-6df236f5dfd9 \
