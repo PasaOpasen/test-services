@@ -58,11 +58,11 @@ vault write auth/approle/role/custom-role \
 
 vault read auth/approle/role/custom-role/role-id \
     | tee /dev/fd/2 | grep role_id \
-    | awk '{print $2}' | tr -d '\n' > /out/role-id.txt
+    | awk '{print $2}' | tr -d '\n' > /out/role-id
 
 vault write -f auth/approle/role/custom-role/secret-id \
     | tee /dev/fd/2 | grep -E 'secret_id\s' \
-    | awk '{print $2}' | tr -d '\n' > /out/secret-id.txt
+    | awk '{print $2}' | tr -d '\n' > /out/secret-id
 
 # vault write auth/approle/login \
 #     role_id=18035f28-e0a1-d811-d439-6df236f5dfd9 \
