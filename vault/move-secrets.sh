@@ -11,7 +11,10 @@ then
     exit 1
 fi
 
-for s in 'role-id' 'secret-id'
-do 
-    scp output/$s $loc/$s
+cat vault-dir | while read loc
+do
+    for s in 'role-id' 'secret-id'
+    do 
+        scp output/$s $loc/$s
+    done
 done
