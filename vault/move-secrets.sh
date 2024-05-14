@@ -13,8 +13,16 @@ fi
 
 cat vault-dir | while read loc
 do
+
+    if echo "$loc" | grep ':' &> /dev/null
+    then
+        copy=scp
+    else
+        copy=cp
+    fi
+
     for s in 'role-id' 'secret-id'
     do 
-        scp output/$s $loc/$s
+        $copy output/$s $loc/$s
     done
 done
